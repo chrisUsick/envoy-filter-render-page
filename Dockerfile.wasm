@@ -1,0 +1,5 @@
+FROM rust:1.45.2
+RUN rustup toolchain install nightly && rustup target add wasm32-unknown-unknown --toolchain nightly
+WORKDIR /usr/src/app/
+COPY . .
+RUN cargo +nightly build --target=wasm32-unknown-unknown --release 
