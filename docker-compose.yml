@@ -7,31 +7,23 @@ services:
       dockerfile: Dockerfile.proxy
     volumes:
       - ./envoy/envoy.yaml:/etc/envoy.yaml
-      - ./target/wasm32-unknown-unknown/release/myenvoyfilter.wasm:/etc/myenvoyfilter.wasm
       - ./target/wasm32-unknown-unknown/release/envoy_filter_render_page.wasm:/etc/envoy_filter_render_page.wasm
       # Uncomment this line if you want to use your own Envoy with WASM enabled.
   #    - ./envoy/istio/envoy:/usr/local/bin/envoy
-    networks:
-      - envoymesh
     expose:
-      - "80"
-      - "8001"
+      - "8080"
+      - "8081"
+      - "9901"
     ports:
-      - "18000:80"
-      - "18001:8001"
+      - "8080:8080"
+      - "8081:8081"
+      - "9901:9901"
 
   web_service:
     image: hashicorp/http-echo
     command:
       - '-text="Welcome to WASM land"'
-    networks:
-      envoymesh:
-        aliases:
-          - web_service
     expose:
       - "5678"
     ports:
       - "18080:5678"
-
-networks:
-  envoymesh: {}
