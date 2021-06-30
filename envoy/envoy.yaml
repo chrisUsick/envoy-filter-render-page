@@ -39,7 +39,7 @@ static_resources:
                         configuration: 
                           "@type": "type.googleapis.com/google.protobuf.StringValue"
                           value: |
-                            {}
+                            {"template": "Hello {{name}}, nice to meet you\n"}
                         vm_config:
                           vm_id: render_page
                           runtime: envoy.wasm.runtime.v8
