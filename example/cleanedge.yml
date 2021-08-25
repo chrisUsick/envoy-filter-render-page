@@ -1,0 +1,4 @@
+routes:
+- template: index.hbs
+  match:
+    prefix: /

@@ -1,18 +1,6 @@
-[package]
-name = "envoy-filter-render-page"
-version = "0.1.0"
-authors = ["Chris Usick <christopher.usick@gmail.com>"]
-edition = "2018"
+[workspace]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-proxy-wasm = "0.1.3"
-log = "0.4"
-serde = { version = "^1.0", features = ["derive"] }
-serde_json = "^1.0"
-chrono = "^0.4"
-handlebars = "3.5.5"
+members = [
+  "cleanedge-wasm",
+  "cleanedge-cli"
+]
